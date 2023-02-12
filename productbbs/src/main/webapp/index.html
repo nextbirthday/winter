@@ -1,127 +1,84 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Basic DataGrid - jQuery EasyUI Demo</title>
-<link rel="stylesheet" type="text/css" href="jquery-easyui-1.10.12/themes/default/easyui.css">
-<link rel="stylesheet" type="text/css" href="jquery-easyui-1.10.12/themes/icon.css">
-<link rel="stylesheet" type="text/css" href="jquery-easyui-1.10.12/demo.css">
-<script type="text/javascript" src="jquery-easyui-1.10.12/jquery.min.js"></script>
-<script type="text/javascript" src="jquery-easyui-1.10.12/jquery.easyui.min.js"></script>
-<script>
-	function submitForm() {
-		$('#insert').form('submit');
-		$('#dlg').dialog('close');
-	}
-	function clearForm() {
-		$('#insert').form('clear');
-	}
-	/* get_data start */
-	function get_data() {
-		$('#dg_table').datagrid({
-			url : 'products',
-			method : "get",
-			emptyMsg : "NO DATA",
-			singleSelect : true,
-			striped : true,
-			rownumbers : true,
-			columns : [ [ {
-				field : "id",
-				title : "아이디",
-				width : "10%"
-			}, {
-				field : "category",
-				title : "카테고리",
-				width : "25%"
-			}, {
-				field : "name",
-				title : "상품명",
-				width : "30%"
-			}, {
-				field : "price",
-				title : "가격",
-				width : "20%"
-			}, {
-				field : "stock",
-				title : "재고",
-				width : "15%"
-			}, ], ],
-		});
-	}
-	/* get_data end */
-
-	function createDialog() {
-		$('#dd').dialog({
-			title : '상품입력',
-			width : 650,
-			height : 250,
-			closed : false,
-			href : 'insertDialog.jsp',
-			modal : true
-		});
-		$('#dd').dialog('refresh', 'insertDialog.jsp');
-	}
-</script>
-</head>
-<body>
-
-  <h2>상품정보</h2>
-  <div style="margin: 20px 0;"></div>
-
-  <table id="dg_table" class="easyui-datagrid" title="Basic DataGrid" style="width: 650px; height: 250px" data-options="singleSelect:true,collapsible:true,">
-    <thead>
-
-      <div style="padding: 5px 0;">
-        <a href="#" class="easyui-linkbutton" onclick="javascript:createDialog()" data-options="iconCls:'icon-add'">Add</a>
-        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-remove'">Remove</a>
-        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-save'">Save</a>
-        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cut',disabled:true">Cut</a>
-        <a href="#" class="easyui-linkbutton" onclick="javascript:get_data()">조회</a>
-      </div>
-      <tr>
-        <th data-options="field:'id',width:100,align:'center'">아이디</th>
-        <th data-options="field:'category',width:150,align:'center'">카테고리</th>
-        <th data-options="field:'name',width:150,align:'center'">상품명</th>
-        <th data-options="field:'price',width:150,align:'center'">가격</th>
-        <th data-options="field:'stock',width:100,align:'center'">재고</th>
-      </tr>
-    </thead>
-  </table>
-
-  <!-- dialog start -->
- <div id="dlg" class="easyui-dialog" title="Basic Dialog" data-options="closed: true,iconCls:'icon-save'" style="width: 600px; height: 400px; padding: 10px">
-
-    <form action="insertProcuct" id="insert" method="post">
-      <div style="margin-bottom: 20px">
-        <input class="easyui-textbox" type="text" name="id" style="width: 50%" data-options="label:'ID:',required:true" autofocus>
-      </div>
-      <div style="margin-bottom: 20px">
-        <input class="easyui-textbox" type="text" name="category" style="width: 50%" data-options="label:'카테고리:',required:false">
-      </div>
-      <div style="margin-bottom: 20px">
-        <input class="easyui-textbox" type="text" name="name" style="width: 50%" data-options="label:'상품명:',required:false">
-      </div>
-      <div style="margin-bottom: 20px">
-        <input class="easyui-textbox" type="text" name="price" style="width: 50%;" data-options="label:'가격:',multiline:true">
-      </div>
-      <div style="margin-bottom: 20px">
-        <input class="easyui-textbox" type="text" name="stock" style="width: 50%;" data-options="label:'재고:'">
-      </div>
-      <div style="margin-bottom: 20px">
-        <select class="easyui-combobox" name="language" label="Language" style="width: 30%"><option value="ar">Arabic</option>
-          <option value="en" selected="selected">English</option>
-          <option value="ja">Japanese</option>
-          <option value="ko">Korean</option>
-        </select>
-      </div>
-      <div style="text-align: center; padding: 5px 0">
-        <a href="#" class="easyui-linkbutton" onclick="submitForm()" style="width: 80px">Submit</a>
-        <a href="#" class="easyui-linkbutton" onclick="clearForm()" style="width: 80px">Clear</a>
-      </div>
-    </form>
-
-
-  </div> 
-
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Basic DataGrid - jQuery EasyUI Demo</title>
+    <link rel="stylesheet" type="text/css" href="jquery-easyui-1.10.12/themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="jquery-easyui-1.10.12/themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="jquery-easyui-1.10.12/demo/demo.css" />
+    <script type="text/javascript" src="jquery-easyui-1.10.12/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery-easyui-1.10.12/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script>
+      function clearForm() {
+        $("#insert").form("clear");
+      }
+      // function createDialog() {
+      //   $("#dd").dialog({
+      //     title: "상품입력",
+      //     width: 650,
+      //     height: 250,
+      //     closed: false,
+      //     href: "insertDialog.jsp",
+      //     modal: true,
+      //   });
+      //   $("#dd").dialog("refresh", "insertDialog.jsp");
+      // }
+    </script>
+  </head>
+  <body>
+    <h2>상품정보</h2>
+    <div style="margin: 20px 0"></div>
+    <table id="dg_table" class="easyui-datagrid" title="Basic DataGrid" style="width: 650px; height: 250px" data-options="singleSelect:true,collapsible:true">
+      <thead>
+        <div style="padding: 5px 0">
+          <a href="javascript:open_dialog()" class="easyui-linkbutton" data-options="iconCls:'icon-add'">Add</a>
+          <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-remove'">Remove</a>
+          <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-save'">Save</a>
+          <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cut',disabled:true">Cut</a>
+          <a href="javascript:get_product()" class="easyui-linkbutton" data-options="iconCls:'icon-search'">조회</a>
+        </div>
+        <tr>
+          <th data-options="field:'id',width:100,align:'center'">아이디</th>
+          <th data-options="field:'category',width:150,align:'center'">카테고리</th>
+          <th data-options="field:'name',width:150,align:'center'">상품명</th>
+          <th data-options="field:'price',width:150,align:'center'">가격</th>
+          <th data-options="field:'stock',width:100,align:'center'">재고</th>
+        </tr>
+      </thead>
+    </table>
+    <!-- dialog start -->
+    <div id="dlg" class="easyui-dialog" title="Basic Dialog" data-options="closed: true,iconCls:'icon-save'" style="width: 600px; height: 400px; padding: 10px">
+      <form id="user_form" method="post">
+        <div style="margin-bottom: 20px">
+          <input class="easyui-textbox" type="text" name="id" style="width: 50%" data-options="label:'ID:',required:true" autofocus />
+        </div>
+        <div style="margin-bottom: 20px">
+          <input class="easyui-textbox" type="text" name="category" style="width: 50%" data-options="label:'카테고리:',required:false" />
+        </div>
+        <div style="margin-bottom: 20px">
+          <input class="easyui-textbox" type="text" name="name" style="width: 50%" data-options="label:'상품명:',required:false" />
+        </div>
+        <div style="margin-bottom: 20px">
+          <input class="easyui-textbox" type="text" name="price" style="width: 50%" data-options="label:'가격:',multiline:true" />
+        </div>
+        <div style="margin-bottom: 20px">
+          <input class="easyui-textbox" type="text" name="stock" style="width: 50%" data-options="label:'재고:'" />
+        </div>
+        <div style="margin-bottom: 20px">
+          <select class="easyui-combobox" name="language" label="Language" style="width: 30%">
+            <option value="ar">Arabic</option>
+            <option value="en" selected="selected">English</option>
+            <option value="ja">Japanese</option>
+            <option value="ko">Korean</option>
+          </select>
+        </div>
+        <div style="text-align: center; padding: 5px 0">
+          <a href="javascript:submit_data()" class="easyui-linkbutton" style="width: 80px">Submit</a>
+          <a href="#" class="easyui-linkbutton" onclick="clearForm()" style="width: 80px">Clear</a>
+        </div>
+      </form>
+    </div>
+    <!-- dialog end -->
+  </body>
 </html>

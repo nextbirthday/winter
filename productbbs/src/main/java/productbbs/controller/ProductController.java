@@ -25,10 +25,9 @@ public class ProductController extends HttpServlet {
     protected void doGet( HttpServletRequest req, HttpServletResponse resp ) throws ServletException, IOException {
         req.setCharacterEncoding( "UTF-8" );
         resp.setCharacterEncoding( "UTF-8" );
-        ProductDAO    dao      = new ProductDAO();
-        List<Product> tempList = dao.selectProduct();
-        PrintWriter   writer   = resp.getWriter();
-        writer.print( toJson( tempList ) );
+        List<Product> productList = new ProductDAO().selectProduct();
+        PrintWriter   writer      = resp.getWriter();
+        writer.print( toJson( productList ) );
     }
     
     public String toJson( List<Product> list ) {
