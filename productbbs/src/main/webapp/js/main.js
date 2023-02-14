@@ -26,7 +26,8 @@ function submit_data() {
   $("#user_form").form("submit", {
     url: "insert",
     success: function (data) {
-      alert(data);
+	  console.log(data)
+      if (data !== '0') get_product()
     },
   });
 
