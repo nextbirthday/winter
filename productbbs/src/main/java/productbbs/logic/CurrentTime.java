@@ -8,13 +8,20 @@ public class CurrentTime {
     
     public static void main( String[] args ) {
         
-        SimpleDateFormat format = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss.SSSX" );
-        Calendar         now    = Calendar.getInstance();
+        // SimpleDateFormat format = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss.SSSX" );
+        // Calendar now = Calendar.getInstance();
+        //
+        // Date now2 = Calendar.getInstance().getTime();
+        //
+        // System.out.println( "now = " + now + "\n" );
+        // System.out.println( "now2 = " + now2 + "\n" );
+        // System.out.println( format.format( now.getTime() ).toString() );
         
-        Date now2 = Calendar.getInstance().getTime();
+        SimpleDateFormat format2 = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss.SSSX" );
+        System.out.println( "format2 = " + format2 );
         
-        System.out.println( "now = " + now + "\n" );
-        System.out.println( "now2 = " + now2 + "\n" );
-        System.out.println( format.format( now.getTime() ).toString() );
+        Calendar now = Calendar.getInstance();
+        System.out.println( "format2 = " + format2.format( now.getTime() ).toString() );
+               
     }
 }
