@@ -33,7 +33,6 @@ public class ProductController extends HttpServlet {
     public String toJson( List<Product> list ) {
         Gson   gson   = new Gson();
         String result = gson.toJson( list );
-        log.info( result );
         return result;
     }
 }
