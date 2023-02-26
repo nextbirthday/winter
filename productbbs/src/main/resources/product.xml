@@ -8,29 +8,34 @@
         <result property="price" column="PRICE" />
         <result property="stock" column="STOCK" />
     </resultMap>
-    
+
     <insert id="insertProduct" parameterType="productbbs.dto.Product">
         INSERT INTO
         SCOTT.PRODUCT
         VALUES( #{id}, #{category}, #{name},
         #{price}, #{stock})
     </insert>
-    
+
     <select id="selectProductList" resultMap="product">
         SELECT * FROM
         SCOTT.PRODUCT
     </select>
-    
+
     <select id="selectProduct" parameterType="productbbs.dto.Product" resultMap="product">
         SELECT * FROM SCOTT.PRODUCT
         WHERE id =
         #{id}
     </select>
-    
+
     <update id="updateProduct">
         UPDATE SCOTT.PRODUCT
         SET CATEGORY = #{category}, NAME = #{name} ,PRICE = #{price} , STOCK = #{stock}
         WHERE ID = #{id}
     </update>
+
+    <delete id="deleteProduct">
+        DELETE FROM SCOTT.PRODUCT
+        WHERE ID= #{id}
+    </delete>
 
 </mapper>

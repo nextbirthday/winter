@@ -1,6 +1,10 @@
+function clearForm() {
+	$("#user_form").form("clear");
+}
+
 function get_product() {
 	$("#dg_table").datagrid({
-		url: "products",
+		url: "product/selectProduct.kh",
 		method: "get",
 		emptyMsg: "NO DATA",
 		singleSelect: true,
@@ -18,20 +22,32 @@ function get_product() {
 	});
 }
 
-function open_dialog() {
-	$("#dlg").dialog({ closed: false, modal: true });
+function insert_dialog() {
+	$("#user_form").form("clear");
+	console.log('insert_dialog');
+	$("#insertDialog").dialog({ closed: false, modal: true });
+}
+
+function update_dialog() {
+	console.log('update_dialog');
+	const row = $('#dg_table').datagrid('getSelected');
+	if (row) {
+		alert(row.id + " " + row.category + " " + row.name);
+	}
+
+	$("#updateDialog").dialog({ closed: false, modal: true });
 }
 
 function submit_data() {
 	$("#user_form").form("submit", {
-		url: "insert",
+		url: "product/insertProduct.kh",
 		success: function(data) {
 			console.log(data)
 			if (data !== '0')
 				$('#dg_table').datagrid('reload');
-
 		},
 	});
 
-	$("#dlg").dialog("close");
+	$("#insertDialog").dialog("close");
 }
+
