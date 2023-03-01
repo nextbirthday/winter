@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Console name="consoleAppender" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %c %-5p [ %l ] %m%n" disableAnsi="false" />
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="consoleAppender" />
+        </Root>
+        <Logger name="logger" level="DEBUG" additivity="false">
+            <AppenderRef ref="consoleAppender" />
+        </Logger>
+        <Logger name="servlet" level="DEBUG" additivity="false">
+            <AppenderRef ref="consoleAppender" />
+        </Logger>
+    </Loggers>
+</Configuration>

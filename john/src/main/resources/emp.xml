@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="emp">
+    <resultMap type="vo.Emp" id="emp">
+        <id property="empno" column="EMPNO" />
+        <result property="ename" column="ENAME" />
+        <result property="job" column="JOB" />
+        <result property="mgr" column="MGR" />
+        <result property="hiredate" column="HIREDATE" />
+        <result property="salary" column="SALARY" />
+        <result property="comm" column="COMM" />
+        <result property="deptno" column="DEPTNO" />
+    </resultMap>
+
+    <select id="getEmpList" resultMap="emp">
+        SELECT* FROM SCOTT.EMP
+    </select>
+
+</mapper>

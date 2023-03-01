@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dept">
+    <resultMap type="vo.Dept" id="dept">
+        <id property="deptno" column="DEPTNO" />
+        <result property="dname" column="DNAME" />
+        <result property="loc" column="LOC" />
+    </resultMap>
+
+    <select id="getDeptList" resultMap="dept">
+        SELECT * FROM SCOTT.DEPT
+    </select>
+
+    <insert id="insertDept" parameterType="vo.Dept">
+        INSERT INTO
+        SCOTT.DEPT
+        VALUES( #{deptno}, #{dname}, #{loc} )
+    </insert>
+    <delete id="deleteDept" parameterType="vo.Dept">
+
+    </delete>
+    <update id="updateDept" parameterType="vo.Dept">
+    </update>
+</mapper>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="product">
+    <resultMap type="vo.Product" id="product">
+        <id property="id" column="ID" />
+        <result property="category" column="CATEGORY" />
+        <result property="name" column="NAME" />
+        <result property="price" column="PRICE" />
+        <result property="stock" column="STOCK" />
+    </resultMap>
+
+    <insert id="insertProduct" parameterType="vo.Product">
+        INSERT INTO
+        SCOTT.PRODUCT
+        VALUES( #{id}, #{category}, #{name},
+        #{price}, #{stock})
+    </insert>
+
+    <select id="selectProduct" resultMap="product">
+        SELECT * FROM
+        SCOTT.PRODUCT
+    </select>
+
+    <select id="selectProductWithID" parameterType="vo.Product" resultMap="product">
+        SELECT * FROM SCOTT.PRODUCT
+        WHERE id =
+        #{id}
+    </select>
+
+    <update id="updateProduct">
+        UPDATE SCOTT.PRODUCT
+        SET CATEGORY = #{category}, NAME = #{name} ,PRICE = #{price} , STOCK = #{stock}
+        WHERE ID = #{id}
+    </update>
+
+    <delete id="deleteProduct">
+        DELETE FROM SCOTT.PRODUCT
+        WHERE ID= #{id}
+    </delete>
+
+</mapper>
